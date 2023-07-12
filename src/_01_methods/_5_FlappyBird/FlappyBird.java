@@ -4,14 +4,16 @@ import processing.core.PApplet;
 
 public class FlappyBird extends PApplet {
     static final int WIDTH = 800;
-    static final int HEIGHT = 600;
+    static final int HEIGHT = 800;
     int x = 50;
     int y = 300;
-    int x1 = 600;
-    int y1 = 50;
+    int pipeX = 600;
     int birdYVelocity = -10;
     int gravity = 1;
     int upperPipeHeight = (int) random(100, 400);
+    int pipeGap = (int) random(150, 300);
+    int lowerY = upperPipeHeight + pipeGap;
+    
 
 
     @Override
@@ -39,17 +41,25 @@ public class FlappyBird extends PApplet {
     	}
     	fill(0, 255, 0);
     	stroke(0, 255, 0);
-    	rect(x1, y1, 50,upperPipeHeight);
-    	x1-=10;
+    	rect(pipeX, 0, 50,upperPipeHeight);
+    	rect(pipeX, lowerY, 50, 525);
+    	pipeX-=10;
     	teleportPipes();
+    	
     	
     }
     public void teleportPipes() {
-    	if(x1 <= 0) {
-    		x1 = 800;
+    	if(pipeX <= 0) {
+    		pipeX = 800;
     	    upperPipeHeight = (int) random(100, 400);
+    	    pipeGap = (int) random(150, 300);
+    	    lowerY = upperPipeHeight + pipeGap;
     	}
     }
+  
+    public void intersectsPipes() { 
+    	if()
+}
 
     static public void main(String[] args) {
         PApplet.main(FlappyBird.class.getName());
