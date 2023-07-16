@@ -1,5 +1,9 @@
 package _01_methods._5_FlappyBird;
 
+import java.awt.Color;
+
+import javax.swing.JOptionPane;
+
 import processing.core.PApplet;
 
 public class FlappyBird extends PApplet {
@@ -13,6 +17,7 @@ public class FlappyBird extends PApplet {
     int upperPipeHeight = (int) random(100, 400);
     int pipeGap = (int) random(150, 300);
     int lowerY = upperPipeHeight + pipeGap;
+    int score = 0;
     
 
 
@@ -45,22 +50,53 @@ public class FlappyBird extends PApplet {
     	rect(pipeX, lowerY, 50, 525);
     	pipeX-=10;
     	teleportPipes();
+    	skyGround();
+    	Score(score);
+    	if (intersectsPipes()) {
+    		JOptionPane.showMessageDialog(null, "YOU DIED!!!");
+    		JOptionPane.showMessageDialog(null, "BETTER LUCK NEXT TIME!!!");
+    		System.exit(0);
+    	}
     	
     	
     }
     public void teleportPipes() {
-    	if(pipeX <= 0) {
+    	if(pipeX <= -50) {
+    		score+=1;
     		pipeX = 800;
     	    upperPipeHeight = (int) random(100, 400);
     	    pipeGap = (int) random(150, 300);
     	    lowerY = upperPipeHeight + pipeGap;
     	}
     }
-  
-    public void intersectsPipes() { 
-    	if()
-}
-
+    public void skyGround() {
+    	fill(0, 0, 0);
+    	stroke(0, 0, 0);
+    	rect(0, HEIGHT-10, WIDTH, 10);
+    	rect(0, 0, WIDTH, 10);
+    	if(y >= HEIGHT) {
+    		JOptionPane.showMessageDialog(null, "YOU FELL!!!");
+    		JOptionPane.showMessageDialog(null, "BETTER LUCK NEXT TIME!!!");
+    		System.exit(0);
+    	}
+    	if(y <= 0) {
+    		JOptionPane.showMessageDialog(null, "STOP TRYING TO GLITCH OUT OF THE GAME, DYE!!!");
+    		JOptionPane.showMessageDialog(null, "BETTER LUCK NEXT TIME!!!");
+    		System.exit(0);
+    	}
+    }
+    public void Score(int variable) {
+    	fill(255, 255, 255);
+    	text("Score = "+variable, 10, 30);
+    }
+    
+    boolean intersectsPipes() { 
+        if (y < upperPipeHeight && x > pipeX && x < (pipeX+50)){
+           return true; }
+       else if (y>lowerY && x > pipeX && x < (pipeX+50)) {
+           return true; }
+       else { return false; }
+    }
     static public void main(String[] args) {
         PApplet.main(FlappyBird.class.getName());
     }
