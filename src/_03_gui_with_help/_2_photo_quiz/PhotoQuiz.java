@@ -26,33 +26,45 @@ public class PhotoQuiz {
 		// 1. find an image on the internet, and put its URL in a String
 		// variable (from your browser, right click on the image, and select
 		// “Copy Image Address” )
-
+		String imageAdress = "https://i.imgur.com/WixNSG5.jpeg";
 		// 2. create a variable of type "Component" that will hold your image
-
+		Component image;
 		// 3. use the "createImage()" method below to initialize your Component
-
+		image = createImage(imageAdress);
 		// 4. add the image to the quiz window
-
+		quizWindow.add(image);
 		// 5. call the pack() method on the quiz window
-
+		quizWindow.pack();
 		// 6. ask a question that relates to the image
-
+		String question = JOptionPane.showInputDialog("Where was this image taken (HINT: IN EUROPE): ");
 		// 7. print "CORRECT" if the user gave the right answer
-
+		if(question.equalsIgnoreCase("Netherlands")) {
+			JOptionPane.showMessageDialog(null, "Correct");
+		}
 		// 8. print "INCORRECT" if the answer is wrong
-
+		else {
+			JOptionPane.showMessageDialog(null, "Incorrect");
+		}
 		// 9. remove the component from the quiz window (you may not see the
-		// effect of this until step 12)
-
+		// effect of this until step 12)=
+		quizWindow.remove(image);
 		// 10. find another image and create it (might take more than one line
 		// of code)
-
+		String imageAdress1 = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Dwayne_Johnson_2014_%28cropped%29.jpg/800px-Dwayne_Johnson_2014_%28cropped%29.jpg";
 		// 11. add the second image to the quiz window
-
+		Component image1;
+		image1 = createImage(imageAdress1);
+		quizWindow.add(image1);
 		// 12. pack the quiz window
-
+		quizWindow.pack();
 		// 13. ask another question
-
+		String question1 = JOptionPane.showInputDialog("Who is this person: ");
+		if(question1.equalsIgnoreCase("The Rock")) {
+			JOptionPane.showMessageDialog(null, "Correct");
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "Incorrect");
+		}
 		// 14+ check answer, say if correct or incorrect, etc.
 
 	}
@@ -68,7 +80,6 @@ public class PhotoQuiz {
 			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null, "I can't find your image!!");
 		}
-		
 		return imageLabel;
 	}
 
