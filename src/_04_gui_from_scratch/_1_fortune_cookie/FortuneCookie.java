@@ -12,8 +12,7 @@ import javax.swing.JPanel;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class FortuneCookie  extends PApplet implements ActionListener{
-	PImage bucket = new PImage();
+public class FortuneCookie implements ActionListener{
     JFrame frame = new JFrame();
     JPanel panel = new JPanel();
     JButton button = new JButton();
@@ -22,7 +21,6 @@ public class FortuneCookie  extends PApplet implements ActionListener{
     JButton button3 = new JButton();
     JButton button4 = new JButton();
     public void showButton() {
-    	bucket = loadImage("637944612069415446.png");
         System.out.println("Click a button for your fortune.");
         frame.setVisible(true);
         panel.add(button);
@@ -33,23 +31,27 @@ public class FortuneCookie  extends PApplet implements ActionListener{
         frame.add(panel);
         frame.pack();
         button.addActionListener(this);
+        button1.addActionListener(this);
+        button2.addActionListener(this);
+        button3.addActionListener(this);
+        button4.addActionListener(this);
    }
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == button) {
-			JOptionPane.showMessageDialog(null, "You are going to die soon...");
+			JOptionPane.showMessageDialog(null, "You are going to be rich soon!");
 		}
-		if (e.getSource() == button1) {
-			JOptionPane.showMessageDialog(null, "RUN!!!");
+		else if (e.getSource() == button1) {
+			JOptionPane.showMessageDialog(null, "YAY!!!!!");
 		}
-		if (e.getSource() == button2) {
-			JOptionPane.showMessageDialog(null, "He's coming.");
+		else if (e.getSource() == button2) {
+			JOptionPane.showMessageDialog(null, "Your dad is coming back!");
 		}
-		if (e.getSource() == button3) {
+		else if (e.getSource() == button3) {
 			JOptionPane.showMessageDialog(null, "HE'S HERE!!!!");
 		}
-		if (e.getSource() == button4) {
+		else if (e.getSource() == button4) {
 			JOptionPane.showMessageDialog(null, "Hide....................");
 			System.exit(0);
 			 }
